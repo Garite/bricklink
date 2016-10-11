@@ -116,8 +116,8 @@ public final class PriceGuideTools {
         retval.setCurrency(guide.getCurrency());
         retval.setMinPrice(minPrice);
         retval.setMaxPrice(maxPrice);
-        retval.setAveragePrice(DecimalTools.getAverage(forAverage.toArray(new BigDecimal[forAverage.size()])));
-        retval.setQuantityAveragePrice(quantityAveragePrice.divide(new BigDecimal(quantity), scale, RoundingMode.HALF_UP));
+        retval.setAveragePrice(0 == forAverage.size() ? null : DecimalTools.getAverage(forAverage.toArray(new BigDecimal[forAverage.size()])));
+        retval.setQuantityAveragePrice(0 == quantity ? null : quantityAveragePrice.divide(new BigDecimal(quantity), scale, RoundingMode.HALF_UP));
         retval.setUnits(units);
         retval.setQuantity(quantity);
         return retval;
